@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzPrinterShould {
@@ -12,22 +14,20 @@ public class FizzBuzzPrinterShould {
         target = new FizzBuzzPrinter();
     }
 
-    @Test void
-    print_out_the_number_one() {
-        assertEquals(target.print(1), "1");
-    }
-
-    @Test void
-    print_number_three_to_fizz() {
-        assertEquals(target.print(3), "Fizz");
-    }
-
-    @Test
-    void print_number_five_to_buzz() {
-            assertEquals(target.print(5), "Buzz");
-        }
-
-    @Test
-    void name() {
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1",
+            "3, Fizz",
+            "4, 4",
+            "5, Buzz",
+            "6, Fizz",
+            "8, 8",
+            "9, Fizz",
+            "10, Buzz",
+            "15, FizzBuzz",
+            "30, FizzBuzz"
+    }) void
+    print_out_the_expected_output(int input, String output) {
+        assertEquals(target.print(input), output);
     }
 }
