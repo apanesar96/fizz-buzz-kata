@@ -21,4 +21,13 @@ public class FizzBuzzPrinterShould {
     print_number_three_to_fizz() {
         assertEquals(target.print(3), "Fizz");
     }
+
+    @Test
+    void print_number_five_to_buzz() {
+            assertEquals(target.print(5), "Buzz");
+        }
+
+    @Test
+    void name() {
+    }
 }
